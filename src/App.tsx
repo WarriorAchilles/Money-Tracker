@@ -1,14 +1,6 @@
 import React from 'react';
 import './App.css';
-
-const Timer = () => {
-  return (
-    <div>
-      <h1>Testing 1 2 3</h1>
-      <p>Hello, I am going to be a timer</p>
-    </div>
-  );
-};
+import { Timer } from './Timer';
 
 function App() {
   return (
