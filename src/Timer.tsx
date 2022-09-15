@@ -1,9 +1,51 @@
-export const Timer = () => {
+import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import './Timer.css';
+
+interface State {
+  time: number;
+  seconds: number;
+  minutes: number;
+}
+
+const Timer = () => {
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+
+  function toggle() {
+    setIsActive(!isActive);
+  }
+
+  function reset() {
+    setSeconds(0);
+    setIsActive(false);
+  }
+
+  useEffect(() => {
+    let interval : ReturnType<typeof setInterval>;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds])
+
   return (
     <div>
-      <h1>Testing 1 2 3</h1>
-      <p>Hello, I am going to be a timer</p>
-      <p>I'm in my own file now :D</p>
+      <div className="time">
+        {seconds}s
+      </div>
+      <div>
+        <button className="btn btn-primary" onClick={toggle}>
+          {isActive ? 'Pause' : 'Start'}
+        </button>
+        <button className="btn btn-secondary" onClick={reset}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
+
+export default Timer;
