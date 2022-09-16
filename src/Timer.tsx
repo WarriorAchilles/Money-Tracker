@@ -33,12 +33,12 @@ const Timer = () => {
 
   return (
     <div>
-      <div className="time">
+      <div className="timer">
         {seconds}s
       </div>
       <div>
         <button className="btn btn-primary" onClick={toggle}>
-          {isActive ? 'Pause' : 'Start'}
+          {isActive ? 'Take break' : 'Start'}
         </button>
         <button className="btn btn-secondary" onClick={reset}>
           Reset

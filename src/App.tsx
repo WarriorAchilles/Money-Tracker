@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Timer from './Timer';
+import DateTime from './DateTime';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <h1>Money Tracker</h1>
       </header>
       <body>
+        <DateTime displayDate={true} displayTime={true} />
         <Timer />
       </body>
     </div>
