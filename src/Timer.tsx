@@ -2,12 +2,6 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Timer.css';
 
-interface State {
-  time: number;
-  seconds: number;
-  minutes: number;
-}
-
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
