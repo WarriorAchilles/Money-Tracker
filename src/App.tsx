@@ -1,7 +1,7 @@
-import React, { FormEvent, useState } from 'react';
-import './App.css';
+import React, { useState } from 'react';
 import Timer from './Timer';
 import DateTime from './DateTime';
+import './App.css';
 
 function App() {
 
@@ -14,18 +14,27 @@ function App() {
         <h1>Money Tracker</h1>
       </header>
       <body>
-        <form>
-          <div className="form-group">
-            <label>Hours</label>
-            <input type="number" name="hours" className="form-control" onChange={e => setHours(Number(e.target.value))} />
+        <div className="container row">
+          <div className="left-side col">
+          jar of money goes here
+          <DateTime displayDate={true} displayTime={true}/>
           </div>
-          <div className="form-group">
-            <label>Wages</label>
-            <input type="number" name="wages" className="form-control" onChange={e => setWages(Number(e.target.value))} />
+          <div className="right-side col container">
+            <div className="row">
+              <form className="col">
+                <div className="form-group">
+                  <label>Hours</label>
+                  <input type="number" name="hours" className="form-control" onChange={e => setHours(Number(e.target.value))} />
+                </div>
+                <div className="form-group">
+                  <label>Wages</label>
+                  <input type="number" name="wages" className="form-control" onChange={e => setWages(Number(e.target.value))} />
+                </div>
+              </form>
+            </div>
+            <Timer hours={hours} wages={wages} />
           </div>
-        </form>
-        <DateTime displayDate={true} displayTime={true} />
-        <Timer hours={hours} wages={wages} />
+        </div>
       </body>
     </div>
   );
