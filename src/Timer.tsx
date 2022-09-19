@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import { ProgressBar } from 'react-bootstrap';
 import './Timer.css';
 
-const Timer = () => {
+interface propTypes {
+  hours: number,
+  wages: number,
+}
+
+const Timer = (props: propTypes) => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
@@ -28,17 +34,20 @@ const Timer = () => {
   return (
     <div>
       <div className="timer">
-      {Math.floor(seconds / 3600).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
-      :{(Math.floor(seconds / 60) % 60).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
-      :{(seconds % 60).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
-    </div>
-      <div>
+        {Math.floor(seconds / 3600).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
+          :{(Math.floor(seconds / 60) % 60).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
+          :{(seconds % 60).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
+      </div>
+      <div className="buttonRow">
         <button className="btn btn-primary mx-1" onClick={toggle}>
           {isActive ? 'Pause' : 'Start'}
         </button>
         <button className="btn btn-secondary" onClick={reset}>
           Reset
         </button>
+      </div>
+      <div className="progressBar">
+        <ProgressBar now={(seconds / (props.hours * 3600)) * 100} />
       </div>
     </div>
   );
