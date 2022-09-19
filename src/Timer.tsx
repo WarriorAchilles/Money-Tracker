@@ -49,6 +49,9 @@ const Timer = (props: propTypes) => {
       <div className="progressBar">
         <ProgressBar now={(seconds / (props.hours * 3600)) * 100} />
       </div>
+      <div className="money">
+        ${(seconds * (props.wages / 3600)).toFixed(2)}
+      </div>
     </div>
   );
 };
