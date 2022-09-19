@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Timer from './Timer';
 import DateTime from './DateTime';
+import { ProgressBar } from 'react-bootstrap';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <body>
         <DateTime displayDate={true} displayTime={true} />
         <Timer />
+        <ProgressBar now={60} />
       </body>
     </div>
   );

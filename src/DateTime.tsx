@@ -9,7 +9,7 @@ export const DateTime = (props: propTypes) => {
     let [date, setDate] = useState(new Date());
 
     useEffect(() => {
-        var clock = setInterval(() => setDate(new Date()), 1000);
+        var clock = setInterval(() => setDate(new Date()), 6000);
 
         return () => clearInterval(clock);
     }, [date]);

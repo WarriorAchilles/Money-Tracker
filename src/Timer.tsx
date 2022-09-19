@@ -4,6 +4,8 @@ import './Timer.css';
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
   function toggle() {
@@ -12,6 +14,8 @@ const Timer = () => {
 
   function reset() {
     setSeconds(0);
+    setMinutes(0);
+    setHours(0);
     setIsActive(false);
   }
 
@@ -19,20 +23,30 @@ const Timer = () => {
     let interval : ReturnType<typeof setInterval>;
     if (isActive) {
       interval = setInterval(() => {
-        setSeconds(seconds => seconds + 1);
+        if (seconds === 59) {
+          setSeconds(0);
+          if (minutes === 59) {
+            setMinutes(0);
+            setHours(hours => hours + 1)
+          } else {
+            setMinutes(minutes => minutes + 1);
+          }
+        } else {
+          setSeconds(seconds => seconds + 1);
+        }
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds])
+  }, [isActive, seconds, minutes, hours])
 
   return (
     <div>
       <div className="timer">
-        {seconds}s
+          {hours.toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}:{minutes.toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}:{seconds.toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
       </div>
       <div>
-        <button className="btn btn-primary" onClick={toggle}>
-          {isActive ? 'Take break' : 'Start'}
+        <button className="btn btn-primary mx-1" onClick={toggle}>
+          {isActive ? 'Pause' : 'Start'}
         </button>
         <button className="btn btn-secondary" onClick={reset}>
           Reset
