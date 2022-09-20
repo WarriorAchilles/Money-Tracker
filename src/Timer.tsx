@@ -39,7 +39,7 @@ const Timer = (props: propTypes) => {
           :{(seconds % 60).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
       </div>
       <div className="buttonRow">
-        <button className="btn btn-primary mx-1" onClick={toggle}>
+        <button className="btn btn-success mx-1" onClick={toggle}>
           {isActive ? 'Pause' : 'Start'}
         </button>
         <button className="btn btn-secondary" onClick={reset}>
@@ -50,7 +50,7 @@ const Timer = (props: propTypes) => {
         ${(seconds * (props.wages / 3600)).toFixed(2)}
       </div>
       <div className="progressBar">
-        <ProgressBar now={(seconds / (props.hours * 3600)) * 100} />
+        <ProgressBar striped variant="success" now={(seconds / (props.hours * 3600)) * 100} />
       </div>
     </div>
   );
