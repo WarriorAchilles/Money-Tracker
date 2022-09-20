@@ -32,7 +32,7 @@ const Timer = (props: propTypes) => {
   }, [isActive, seconds])
 
   return (
-    <div>
+    <div className="timer-container row">
       <div className="timer">
         {Math.floor(seconds / 3600).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
           :{(Math.floor(seconds / 60) % 60).toLocaleString('en-us', {minimumIntegerDigits: 2, useGrouping: false})}
@@ -46,11 +46,11 @@ const Timer = (props: propTypes) => {
           Reset
         </button>
       </div>
-      <div className="progressBar">
-        <ProgressBar now={(seconds / (props.hours * 3600)) * 100} />
-      </div>
       <div className="money">
         ${(seconds * (props.wages / 3600)).toFixed(2)}
+      </div>
+      <div className="progressBar">
+        <ProgressBar now={(seconds / (props.hours * 3600)) * 100} />
       </div>
     </div>
   );

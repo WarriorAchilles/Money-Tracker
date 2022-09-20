@@ -9,8 +9,21 @@
   color: white;
 }
 
-/* .right-side {
+.form-container {
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #aab1c1;
+  box-shadow: 3px 5px;
 }
 
-.left-side {
-} */
+.form-container div {
+  margin: 25px 0;
+}
+
+.form-container form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-left: 10px;
+}

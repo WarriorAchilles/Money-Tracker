@@ -17,11 +17,11 @@ export const DateTime = (props: propTypes) => {
     let elements = [];
 
     if (props.displayDate) {
-        elements.push(<div className="date"><p>{date.toLocaleDateString([], {weekday: 'long', month: 'long', year: 'numeric', day: 'numeric'})}</p></div>)
+        elements.push(<p className="date">{date.toLocaleDateString([], {weekday: 'long', month: 'long', year: 'numeric', day: 'numeric'})}</p>)
     }
 
     if (props.displayTime) {
-        elements.push(<div className="time"><p>{date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</p></div>)
+        elements.push(<p className="time">{date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</p>)
     }
 
     return (

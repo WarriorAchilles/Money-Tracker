@@ -14,21 +14,21 @@ function App() {
         <h1>Money Tracker</h1>
       </header>
       <body>
-        <div className="container row">
+        <div className="container-fluid row">
           <div className="left-side col">
           jar of money goes here
           <DateTime displayDate={true} displayTime={true}/>
           </div>
-          <div className="right-side col container">
-            <div className="row">
+          <div className="right-side col">
+            <div className="form-container row">
               <form className="col">
-                <div className="form-group">
-                  <label>Hours</label>
-                  <input type="number" name="hours" className="form-control" onChange={e => setHours(Number(e.target.value))} />
+                <div className="form-group row">
+                  <label className="col-2" >Hours</label>
+                  <input type="number" name="hours" className="form-control col" onChange={e => setHours(Number(e.target.value))} />
                 </div>
-                <div className="form-group">
-                  <label>Wages</label>
-                  <input type="number" name="wages" className="form-control" onChange={e => setWages(Number(e.target.value))} />
+                <div className="form-group row">
+                  <label className="col-2">Wages</label>
+                  <input type="number" name="wages" className="form-control col" onChange={e => setWages(Number(e.target.value))} />
                 </div>
               </form>
             </div>

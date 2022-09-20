@@ -1,4 +1,17 @@
 .timer {
   font-size: 3rem;
-  padding: 2rem;
+  padding: 1.5rem;
+}
+
+.timer-container {
+  text-align: center;
+}
+
+.money {
+  font-size: 2.5rem;
+  padding: 1rem;
+}
+
+.progress {
+  height: 25px;
 }
