@@ -39,13 +39,14 @@ const Coins = (props: propTypes) => {
             }
         }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.moneyEarned])
 
-    let coin: JSX.Element = <img src={BronzeCoin} className={'bronze-coin ' + classNames} alt="a bronze coin" />;
+    let coin: JSX.Element = <img src={BronzeCoin} className={'coin ' + classNames} alt="a bronze coin" />;
     if (props.coinType === 'gold') {
-        coin = <img src={GoldCoin} className={'gold-coin ' + classNames} alt="a gold coin" />;
+        coin = <img src={GoldCoin} className={'coin ' + classNames} alt="a gold coin" />;
     } else if (props.coinType === 'silver') {
-        coin = <img src={SilverCoin} className={'silver-coin ' + classNames} alt="a silver coin" />;
+        coin = <img src={SilverCoin} className={'coin ' + classNames} alt="a silver coin" />;
     }
 
     return coin;
