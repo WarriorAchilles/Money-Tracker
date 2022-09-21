@@ -13,6 +13,7 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [coinType, setCoinType] = useState('gold');
+  const [moneyEarned, setMoneyEarned] = useState(0);
 
   function toggle() {
     setIsActive(!isActive);
@@ -21,6 +22,7 @@ function App() {
   function reset() {
     setSeconds(0);
     setIsActive(false);
+    setMoneyEarned(0);
   }
 
   useEffect(() => {
@@ -28,10 +30,11 @@ function App() {
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds + 1);
+        setMoneyEarned(seconds * (wages / 3600));
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds])
+  }, [isActive, seconds, wages])
 
   return (
     <div className="App">
@@ -50,7 +53,7 @@ function App() {
                 <option value="bronze">$0.01</option>
               </select>
             </div>
-            <Coins coinType={coinType} seconds={seconds} />
+            <Coins coinType={coinType} moneyEarned={moneyEarned} />
             <img id="jar" src={EmptyJar} alt="an empty jar"/>
             <DateTime displayDate={true} displayTime={true}/>
           </div>
@@ -82,7 +85,7 @@ function App() {
                 </button>
               </div>
               <div className="money">
-                ${(seconds * (wages / 3600)).toFixed(2)}
+                ${moneyEarned.toFixed(2)}
               </div>
               <div className="progressBar">
                 <ProgressBar striped variant="success" now={(seconds / (hours * 3600)) * 100} />

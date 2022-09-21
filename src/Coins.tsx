@@ -5,17 +5,41 @@ import BronzeCoin from './assets/BronzeCoin.png';
 
 interface propTypes {
     coinType: string,
-    seconds: number,
+    moneyEarned: number,
 }
 
 const Coins = (props: propTypes) => {
 
     const [classNames, setClassNames] = useState('');
+    const [moneyAtLastCoin, setMoneyAtLastCoin] = useState(0);
 
-    useEffect(() => {
+    function dropCoin(moneyEarned: number) {
+        setMoneyAtLastCoin(moneyEarned);
         setClassNames('');
         setTimeout(() => setClassNames('animated'), 100);
-    }, [props.seconds])
+    }
+
+    useEffect(() => {
+        let changeInMoney: number = props.moneyEarned - moneyAtLastCoin;
+
+        if (props.moneyEarned === 0) {
+            setMoneyAtLastCoin(0);
+        } else {
+        if (props.coinType === 'gold') {
+            if (changeInMoney >= 1) {
+                dropCoin(Math.floor(props.moneyEarned));
+            }
+        } else if (props.coinType ==='silver') {
+            if (changeInMoney >= 0.5) {
+                dropCoin(Math.round(props.moneyEarned*2)/2);
+            }
+        } else {
+            if (changeInMoney >= 0.1) {
+                dropCoin(props.moneyEarned);
+            }
+        }
+    }
+    }, [props.moneyEarned])
 
     let coin: JSX.Element = <img src={BronzeCoin} className={'bronze-coin ' + classNames} alt="a bronze coin" />;
     if (props.coinType === 'gold') {
