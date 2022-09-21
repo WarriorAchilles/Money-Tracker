@@ -12,6 +12,7 @@ function App() {
   const [wages, setWages] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [coinType, setCoinType] = useState('gold');
 
   function toggle() {
     setIsActive(!isActive);
@@ -41,7 +42,15 @@ function App() {
         <div className="container-fluid row">
           <div className="left-side col">
             <a href="https://www.vecteezy.com/free-vector/3d">3d coin Vectors by Vecteezy</a>
-            <Coins coinType="gold" seconds={0} />
+            <div className="form-group coin-select-container">
+              <label className="coin-label">Drop coin every</label>
+              <select className="form-select" id="coin-select" name="coin-select" onChange={(e) => setCoinType(e.target.value)}>
+                <option value="gold">$1.00</option>
+                <option value="silver">$0.50</option>
+                <option value="bronze">$0.01</option>
+              </select>
+            </div>
+            <Coins coinType={coinType} seconds={seconds} />
             <img id="jar" src={EmptyJar} alt="an empty jar"/>
             <DateTime displayDate={true} displayTime={true}/>
           </div>

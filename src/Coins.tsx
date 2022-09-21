@@ -14,7 +14,7 @@ const Coins = (props: propTypes) => {
 
     useEffect(() => {
         setClassNames('');
-        setClassNames('animated');
+        setTimeout(() => setClassNames('animated'), 100);
     }, [props.seconds])
 
     let coin: JSX.Element = <img src={BronzeCoin} className={'bronze-coin ' + classNames} alt="a bronze coin" />;
