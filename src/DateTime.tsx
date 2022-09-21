@@ -25,7 +25,7 @@ export const DateTime = (props: propTypes) => {
     }
 
     return (
-        <div className="dateTime col">
+        <div className="dateTime">
             {elements}
         </div>
     );

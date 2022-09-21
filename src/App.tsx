@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Timer from './Timer';
 import DateTime from './DateTime';
+import EmptyJar from './assets/EmptyJar.png';
 import './App.css';
 
 function App() {
@@ -16,8 +17,8 @@ function App() {
       <body>
         <div className="container-fluid row">
           <div className="left-side col">
-          jar of money goes here
-          <DateTime displayDate={true} displayTime={true}/>
+            <img id="jar" src={EmptyJar} alt="an empty jar"/>
+            <DateTime displayDate={true} displayTime={true}/>
           </div>
           <div className="right-side col">
             <div className="form-container row">
