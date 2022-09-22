@@ -14,6 +14,7 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [coinType, setCoinType] = useState('gold');
   const [moneyEarned, setMoneyEarned] = useState(0);
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   function toggle() {
     setIsActive(!isActive);
@@ -53,7 +54,7 @@ function App() {
                 <option value="bronze">$0.01</option>
               </select>
             </div>
-            <Coins coinType={coinType} moneyEarned={moneyEarned} />
+            <Coins coinType={coinType} moneyEarned={moneyEarned} soundEnabled={soundEnabled} />
             <img id="jar" src={EmptyJar} alt="an empty jar"/>
             <DateTime displayDate={true} displayTime={true}/>
           </div>
