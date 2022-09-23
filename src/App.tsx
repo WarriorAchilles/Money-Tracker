@@ -63,7 +63,7 @@ function App() {
                   <option value="silver">$0.50</option>
                   <option value="bronze">$0.01</option>
                 </select>
-                <button className={"btn btn-" + (soundEnabled ? 'primary' : 'secondary')} onClick={toggleSound}>{soundEnabled ? 'Mute sounds' : 'Unmute sounds'}</button>
+                <button className={"btn my-2 btn-" + (soundEnabled ? 'primary' : 'secondary')} onClick={toggleSound}>{soundEnabled ? 'Mute sounds' : 'Unmute sounds'}</button>
               </div>
             </div>
             <div className="row">
