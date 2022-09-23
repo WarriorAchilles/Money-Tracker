@@ -18,6 +18,7 @@ const Coins = (props: propTypes) => {
 
     const [classNames, setClassNames] = useState('');
     const [moneyAtLastCoin, setMoneyAtLastCoin] = useState(0);
+    const [isHidden, setIsHidden] = useState(true);
     const [play0] = useSound(CoinDropSfx0, {volume: 1, interrupt: true, soundEnabled: props.soundEnabled});
     const [play1] = useSound(CoinDropSfx1, {volume: 1, interrupt: true, soundEnabled: props.soundEnabled});
     const [play2] = useSound(CoinDropSfx2, {volume: 1, interrupt: true, soundEnabled: props.soundEnabled});
@@ -26,6 +27,8 @@ const Coins = (props: propTypes) => {
     function dropCoin(moneyEarned: number) {
         setMoneyAtLastCoin(moneyEarned);
         setClassNames('');
+        setIsHidden(false);
+        setTimeout(() => setIsHidden(true), 250);
         setTimeout(() => {
             setClassNames('animated');
             let rand: number = Math.floor(Math.random() * 4);
@@ -69,11 +72,11 @@ const Coins = (props: propTypes) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.moneyEarned])
 
-    let coin: JSX.Element = <img src={BronzeCoin} className={'coin ' + classNames} alt="a bronze coin" />;
+    let coin: JSX.Element = <img src={BronzeCoin} className={'coin ' + classNames} alt="a bronze coin" hidden={isHidden} />;
     if (props.coinType === 'gold') {
-        coin = <img src={GoldCoin} className={'coin ' + classNames} alt="a gold coin" />;
+        coin = <img src={GoldCoin} className={'coin ' + classNames} alt="a gold coin" hidden={isHidden} />;
     } else if (props.coinType === 'silver') {
-        coin = <img src={SilverCoin} className={'coin ' + classNames} alt="a silver coin" />;
+        coin = <img src={SilverCoin} className={'coin ' + classNames} alt="a silver coin" hidden={isHidden} />;
     }
 
     return coin;

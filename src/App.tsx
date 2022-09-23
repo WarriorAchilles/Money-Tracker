@@ -20,6 +20,10 @@ function App() {
     setIsActive(!isActive);
   }
 
+  function toggleSound() {
+    setSoundEnabled(!soundEnabled);
+  }
+
   function reset() {
     setSeconds(0);
     setIsActive(false);
@@ -45,18 +49,27 @@ function App() {
       <body>
         <div className="container-fluid row">
           <div className="left-side col">
-            <a href="https://www.vecteezy.com/free-vector/3d">3d coin Vectors by Vecteezy</a>
-            <div className="form-group coin-select-container">
-              <label className="coin-label">Drop coin every</label>
-              <select className="form-select" id="coin-select" name="coin-select" onChange={(e) => setCoinType(e.target.value)}>
-                <option value="gold">$1.00</option>
-                <option value="silver">$0.50</option>
-                <option value="bronze">$0.01</option>
-              </select>
+            <div className="row top-left">
+              <div className="col-4 top-left">
+              <a href="https://www.vecteezy.com/free-vector/3d">3d coin Vectors by Vecteezy</a>
+              </div>
+              <div className="col top-left">
+                <Coins coinType={coinType} moneyEarned={moneyEarned} soundEnabled={soundEnabled} />
+              </div>
+              <div className="form-group coin-select-container col-4 top-left">
+                <label className="coin-label">Drop coin every</label>
+                <select className="form-select" id="coin-select" name="coin-select" onChange={(e) => setCoinType(e.target.value)}>
+                  <option value="gold">$1.00</option>
+                  <option value="silver">$0.50</option>
+                  <option value="bronze">$0.01</option>
+                </select>
+                <button className={"btn btn-" + (soundEnabled ? 'primary' : 'secondary')} onClick={toggleSound}>{soundEnabled ? 'Mute sounds' : 'Unmute sounds'}</button>
+              </div>
             </div>
-            <Coins coinType={coinType} moneyEarned={moneyEarned} soundEnabled={soundEnabled} />
-            <img id="jar" src={EmptyJar} alt="an empty jar"/>
-            <DateTime displayDate={true} displayTime={true}/>
+            <div className="row">
+              <DateTime displayDate={true} displayTime={true}/>
+              <img id="jar" className="col-7" src={EmptyJar} alt="an empty jar"/>
+            </div>
           </div>
           <div className="right-side col">
             <div className="form-container">
